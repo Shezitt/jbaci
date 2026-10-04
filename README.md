@@ -1,23 +1,25 @@
-# jBACI para Linux
+# jBACI for Linux
 
-jBACI 1.4.5 listo para usar en Linux. Se usa para aprender programación concurrente: procesos, semáforos y monitores.
+**English** | [Español](README.es.md)
 
-**jBACI** es un entorno de desarrollo y simulador creado por Moti Ben-Ari. Permite escribir programas concurrentes en **C--** (`.cm`) o **Pascal** (`.pm`), compilarlos y ejecutarlos paso a paso. Mientras se ejecutan, muestra los procesos, las variables globales y cómo se intercalan las instrucciones.
+jBACI 1.4.5, ready to use on Linux. It is used to learn concurrent programming: processes, semaphores and monitors.
 
-La distribución original es para Windows. Este repositorio agrega lo necesario para usarla en Linux.
+**jBACI** is a development environment and simulator created by Moti Ben-Ari. You write concurrent programs in **C--** (`.cm`) or **Pascal** (`.pm`), compile them and run them step by step. While a program runs, jBACI shows the processes, the global variables and how the instructions interleave.
 
-## Cómo funciona en Linux
+The original distribution is for Windows. This repository adds what is needed to use it on Linux.
 
-- `jbaci.jar` es una aplicación Java, así que corre tal cual.
-- Los compiladores `bin/bacc.exe` (C--) y `bin/bapas.exe` (Pascal) son ejecutables de Windows. Se ejecutan con [Wine](https://www.winehq.org/) mediante los scripts `bin/bacc` y `bin/bapas`.
-- `run.sh` abre jBACI y genera `config.cfg` con las rutas correctas de los compiladores.
+## How it works on Linux
 
-## Requisitos
+- `jbaci.jar` is a Java application, so it runs as is.
+- The compilers `bin/bacc.exe` (C--) and `bin/bapas.exe` (Pascal) are Windows executables. They run under [Wine](https://www.winehq.org/) through the scripts `bin/bacc` and `bin/bapas`.
+- `run.sh` starts jBACI and generates `config.cfg` with the correct compiler paths.
 
-- Java (probado con OpenJDK 21)
-- Wine con soporte para programas de 32 bits
+## Requirements
 
-En Debian o Ubuntu:
+- Java (tested with OpenJDK 21)
+- Wine with support for 32-bit programs
+
+On Debian or Ubuntu:
 
 ```sh
 sudo dpkg --add-architecture i386
@@ -25,45 +27,45 @@ sudo apt update
 sudo apt install default-jre wine wine32:i386
 ```
 
-## Uso
+## Usage
 
 ```sh
 git clone https://github.com/Shezitt/jbaci.git
 cd jbaci
-./run.sh                      # abre jBACI
-./run.sh examples/hello.pm    # abre un archivo directamente
+./run.sh                      # start jBACI
+./run.sh examples/hello.pm    # open a file directly
 ```
 
-Tus programas pueden estar en cualquier carpeta. Hay dos cosas a tener en cuenta:
+Your programs can live in any folder. Keep two things in mind:
 
-- **Sin espacios en las rutas:** jBACI no maneja rutas con espacios, ni en la carpeta del programa ni en el nombre del archivo.
-- **Los `#include` buscan en la misma carpeta:** por ejemplo, `#include "gdefs.cm"` busca el archivo en la carpeta del programa que lo incluye.
+- **No spaces in paths:** jBACI does not handle paths with spaces, either in the program's folder or in the file name.
+- **`#include` looks in the same folder:** for example, `#include "gdefs.cm"` looks for the file in the folder of the program that includes it.
 
-También puedes usar los compiladores desde la terminal:
+You can also use the compilers from the terminal:
 
 ```sh
-bin/bacc  programa.cm   # genera programa.pco y programa.lst
-bin/bapas programa.pm
+bin/bacc  program.cm   # produces program.pco and program.lst
+bin/bapas program.pm
 ```
 
-## Contenido
+## Contents
 
-| Ruta | Descripción |
+| Path | Description |
 |------|-------------|
-| `jbaci.jar` | jBACI 1.4.5 (interfaz e intérprete) |
-| `bin/bacc.exe`, `bin/bapas.exe` | Compiladores BACI originales para Windows |
-| `bin/bacc`, `bin/bapas` | Scripts que ejecutan los compiladores con Wine |
-| `run.sh` | Lanzador para Linux |
-| `config.default.cfg` | Configuración inicial de jBACI |
-| `examples/` | Programas de ejemplo en C-- y Pascal |
-| `run.bat`, `runc.bat`, `runp.bat` | Lanzadores originales para Windows |
+| `jbaci.jar` | jBACI 1.4.5 (user interface and interpreter) |
+| `bin/bacc.exe`, `bin/bapas.exe` | Original BACI compilers for Windows |
+| `bin/bacc`, `bin/bapas` | Scripts that run the compilers under Wine |
+| `run.sh` | Linux launcher |
+| `config.default.cfg` | Initial jBACI configuration |
+| `examples/` | Example programs in C-- and Pascal |
+| `run.bat`, `runc.bat`, `runp.bat` | Original Windows launchers |
 
-## Origen y créditos
+## Origin and credits
 
-- **jBACI**: © 2002-2004 Mordechai (Moti) Ben-Ari. Basado en BACI Debugger, © 1999 David Strite. El código fuente original está en [motib/jbaci](https://github.com/motib/jbaci).
-- **BACI** (Ben-Ari Concurrent Interpreter) y sus compiladores `bacc` y `bapas`: Bill Bynum y Tracy Camp.
-- La distribución original (`jbaci145.zip`) la entregaron en la materia *Taller de Sistemas Operativos*, Facultad de Ciencias y Tecnología, Universidad Mayor de San Simón (UMSS).
+- **jBACI**: © 2002-2004 Mordechai (Moti) Ben-Ari. Based on BACI Debugger, © 1999 David Strite. The original source code is at [motib/jbaci](https://github.com/motib/jbaci).
+- **BACI** (Ben-Ari Concurrent Interpreter) and its compilers `bacc` and `bapas`: Bill Bynum and Tracy Camp.
+- The original distribution (`jbaci145.zip`) was provided in the *Taller de Sistemas Operativos* (Operating Systems Workshop) course, Facultad de Ciencias y Tecnología, Universidad Mayor de San Simón (UMSS), Bolivia.
 
-## Licencia
+## License
 
-jBACI se distribuye bajo la [GNU General Public License, versión 2 o posterior](COPYING), según su autor. Los compiladores BACI pertenecen a sus autores y se incluyen tal como venían en la distribución original de jBACI.
+jBACI is distributed under the [GNU General Public License, version 2 or later](COPYING), as stated by its author. The BACI compilers belong to their authors and are included as they came in the original jBACI distribution.
