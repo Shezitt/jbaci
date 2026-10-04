@@ -1,0 +1,4 @@
+#!/bin/sh
+# Wrapper: ejecuta el compilador BACI de Windows mediante wine
+export WINEDEBUG=-all
+exec wine "$(dirname "$(readlink -f "$0")")/bapas.exe" "$@"

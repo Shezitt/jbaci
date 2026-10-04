@@ -1,0 +1,12 @@
+# Programas propios
+projects/
+
+# Configuración local (la genera run.sh a partir de config.default.cfg)
+config.cfg
+
+# Salida de los compiladores BACI
+*.pco
+*.lst
+
+# Zip original
+*.zip
